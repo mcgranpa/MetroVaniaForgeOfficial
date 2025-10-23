@@ -67,10 +67,11 @@ texture = SubResource("GradientTexture2D_rupst")
 shape = SubResource("RectangleShape2D_wt17y")
 
 [node name="Sprite2D7" type="Sprite2D" parent="."]
-position = Vector2(137.7263, 226.70663)
+position = Vector2(137, 227.00002)
 rotation = 0.40690893
 scale = Vector2(5.2659645, 1.9951787)
 texture = SubResource("GradientTexture2D_rupst")
+metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D7"]
 
