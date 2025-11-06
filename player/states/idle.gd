@@ -23,7 +23,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 	# Handle input
 	if _event.is_action_pressed( "jump" ):
 		return jump
-	return next_state
+	return null
 
 
 # What happens each process tick in this state?
@@ -32,7 +32,7 @@ func process( _delta: float ) -> PlayerState:
 		return run
 	elif player.direction.y > 0.5:
 		return crouch
-	return next_state
+	return null
 
 
 # What happens each physics_process tick in this state?

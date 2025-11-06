@@ -13,14 +13,14 @@ func init() -> void:
 func enter() -> void:
 	player.animation_player.play( "jump" )
 	player.animation_player.pause()
-	player.add_debug_indicator( Color.LIME_GREEN )
+	#player.add_debug_indicator( Color.LIME_GREEN )
 	player.velocity.y = -jump_velocity
 	pass
 
 
 # What happens when we exit this state?
 func exit() -> void:
-	player.add_debug_indicator( Color.YELLOW )
+	#player.add_debug_indicator( Color.YELLOW )
 	pass
 
 
