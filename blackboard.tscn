@@ -78,87 +78,25 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -670.0
-offset_top = 215.0
-offset_right = -415.0
-offset_bottom = 446.0
+offset_left = -221.0
+offset_top = 67.0
+offset_right = 85.0
+offset_bottom = 350.0
 grow_horizontal = 2
-text = "1) Review homework assignment
+text = "1) Prep new level scene
 
-2) Address Input drift defect
+2) Create a TileSet resource
 
-3) PlayerState updates
+3) Set up collision layers, etc
 
-4) Idle state code
+4) Add our first TileMapLayer
 
-5) Run state code"
+5) Add a player and test it out!
 
-[node name="Label5" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -89.0
-offset_top = 476.0
-offset_right = 2.0
-offset_bottom = 499.0
-grow_horizontal = 2
-text = "v = -400"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.0
-offset_top = 298.0
-offset_right = 29.0
-offset_bottom = 321.0
-grow_horizontal = 2
-text = "v = -200"
-horizontal_alignment = 1
-
-[node name="Label7" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -10.0
-offset_top = 160.0
-offset_right = 81.0
-offset_bottom = 183.0
-grow_horizontal = 2
-text = "v = -80"
-horizontal_alignment = 1
-
-[node name="Label8" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 356.0
-offset_top = 157.0
-offset_right = 447.0
-offset_bottom = 180.0
-grow_horizontal = 2
-text = "v = 80"
-horizontal_alignment = 1
-
-[node name="Label9" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 420.0
-offset_top = 308.0
-offset_right = 511.0
-offset_bottom = 331.0
-grow_horizontal = 2
-text = "v = 200"
-horizontal_alignment = 1
+6) Look at using multiple TileMapLayers"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.36078432)
 texture_filter = 2
 layout_mode = 0
@@ -170,6 +108,7 @@ texture = SubResource("GradientTexture2D_k8u6i")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 262.0
 offset_top = 494.0
@@ -187,81 +126,8 @@ offset_bottom = 12.0
 texture = SubResource("GradientTexture2D_b6sl7")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 283.0
-offset_top = 317.0
-offset_right = 303.0
-offset_bottom = 337.0
-texture = SubResource("GradientTexture2D_ntenn")
-expand_mode = 1
-
-[node name="TextureRect7" type="TextureRect" parent="TextureRect3"]
-layout_mode = 0
-offset_left = -144.0
-offset_top = 9.0
-offset_right = 10.0
-offset_bottom = 12.0
-texture = SubResource("GradientTexture2D_b6sl7")
-expand_mode = 1
-
-[node name="TextureRect4" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 339.0
-offset_top = 176.0
-offset_right = 359.0
-offset_bottom = 196.0
-texture = SubResource("GradientTexture2D_ntenn")
-expand_mode = 1
-
-[node name="TextureRect7" type="TextureRect" parent="TextureRect4"]
-layout_mode = 0
-offset_left = -144.0
-offset_top = 9.0
-offset_right = 10.0
-offset_bottom = 12.0
-texture = SubResource("GradientTexture2D_b6sl7")
-expand_mode = 1
-
-[node name="TextureRect5" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 575.0
-offset_top = 193.0
-offset_right = 595.0
-offset_bottom = 213.0
-rotation = 3.1415927
-texture = SubResource("GradientTexture2D_ntenn")
-expand_mode = 1
-
-[node name="TextureRect7" type="TextureRect" parent="TextureRect5"]
-layout_mode = 0
-offset_left = -144.0
-offset_top = 9.0
-offset_right = 10.0
-offset_bottom = 12.0
-texture = SubResource("GradientTexture2D_b6sl7")
-expand_mode = 1
-
-[node name="TextureRect6" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 640.0
-offset_top = 345.0
-offset_right = 660.0
-offset_bottom = 365.0
-rotation = 3.1415927
-texture = SubResource("GradientTexture2D_ntenn")
-expand_mode = 1
-
-[node name="TextureRect7" type="TextureRect" parent="TextureRect6"]
-layout_mode = 0
-offset_left = -144.0
-offset_top = 9.0
-offset_right = 10.0
-offset_bottom = 12.0
-texture = SubResource("GradientTexture2D_b6sl7")
-expand_mode = 1
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(112, 424)
 scale = Vector2(2, 2)
@@ -269,39 +135,3 @@ texture = ExtResource("1_3otb6")
 hframes = 16
 vframes = 4
 frame = 24
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(130, 248)
-scale = Vector2(2, 2)
-texture = ExtResource("1_3otb6")
-hframes = 16
-vframes = 4
-frame = 25
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(195, 109)
-scale = Vector2(2, 2)
-texture = ExtResource("1_3otb6")
-hframes = 16
-vframes = 4
-frame = 26
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(724, 102)
-scale = Vector2(2, 2)
-texture = ExtResource("1_3otb6")
-hframes = 16
-vframes = 4
-frame = 27
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(797, 253)
-scale = Vector2(2, 2)
-texture = ExtResource("1_3otb6")
-hframes = 16
-vframes = 4
-frame = 28
