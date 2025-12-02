@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=4 uid="uid://buhwrv3w1537k"]
+[gd_scene load_steps=7 format=4 uid="uid://buhwrv3w1537k"]
 
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="1_vv2jw"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="2_r7adf"]
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="3_vv2jw"]
+[ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="4_7vwju"]
+[ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="5_nqq0o"]
+[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="6_nqq0o"]
 
 [node name="03" type="Node2D"]
 
@@ -33,3 +36,33 @@ size = 3
 location = 2
 target_level = "uid://cc0jawhlxy1go"
 target_area_name = "LevelTransition2"
+
+[node name="props" type="Node2D" parent="."]
+position = Vector2(-64, -16)
+
+[node name="Plant6" parent="props" instance=ExtResource("4_7vwju")]
+position = Vector2(436, 274)
+speed_scale = 1.4
+flip_h = true
+
+[node name="Torch" parent="props" instance=ExtResource("5_nqq0o")]
+position = Vector2(311, 147)
+
+[node name="Torch2" parent="props" instance=ExtResource("5_nqq0o")]
+position = Vector2(1117, 275)
+
+[node name="Torch3" parent="props" instance=ExtResource("5_nqq0o")]
+position = Vector2(926, 275)
+
+[node name="Torch4" parent="props" instance=ExtResource("5_nqq0o")]
+position = Vector2(800, 179)
+
+[node name="Torch5" parent="props" instance=ExtResource("5_nqq0o")]
+position = Vector2(541, 211)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.11813272, 0.14020103, 0.11620222, 1)
+blend_mode = 2
+
+[node name="Player" parent="." instance=ExtResource("6_nqq0o")]
+position = Vector2(224, 120)
