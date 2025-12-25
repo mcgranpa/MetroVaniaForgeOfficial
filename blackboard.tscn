@@ -71,29 +71,27 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 134.0
 offset_bottom = 39.0
-text = "DYNAMIC, VELOCITY BASED JUMP & FALL ANIMATIONS"
+text = "SAVE & LOAD SYSTEM"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -221.0
-offset_top = 67.0
-offset_right = 85.0
-offset_bottom = 350.0
+offset_left = -222.0
+offset_top = 70.0
+offset_right = 203.0
+offset_bottom = 353.0
 grow_horizontal = 2
-text = "1) Prep new level scene
+text = "1) Build a global script for a singleton style save system
 
-2) Create a TileSet resource
+2) Define what our save data will look like
 
-3) Set up collision layers, etc
+3) Setup keyboard shortcuts to test the functionality
 
-4) Add our first TileMapLayer
+4) Save and Load Data
 
-5) Add a player and test it out!
-
-6) Look at using multiple TileMapLayers"
+5) Extend to support 3 load slots"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
