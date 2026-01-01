@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://cs38omed071b"]
+[gd_scene load_steps=26 format=4 uid="uid://cs38omed071b"]
 
 [ext_resource type="Script" uid="uid://cpk5ibmruwx4q" path="res://tile_screen/title_screen.gd" id="1_bh32f"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_jm15f"]
-[ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="2_nqviy"]
+[ext_resource type="Texture2D" uid="uid://bdfgu14350lk5" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="3_20v12"]
 [ext_resource type="Texture2D" uid="uid://br22sc8bu5mrc" path="res://tile_screen/metroidvania_logo.png" id="3_nqviy"]
+[ext_resource type="Script" uid="uid://5nwgpdrd1041" path="res://general/scripts/light_flicker.gd" id="4_af0m1"]
 
 [sub_resource type="Gradient" id="Gradient_bh32f"]
 colors = PackedColorArray(0.8509804, 0.34117648, 0.3882353, 1, 0.32941177, 0.050980393, 0.050980393, 0)
@@ -13,6 +14,98 @@ gradient = SubResource("Gradient_bh32f")
 height = 129
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_20v12"]
+offsets = PackedFloat32Array(0.31333333, 0.52666664, 0.88666666, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.76037925, 0, 1, 0.51357734, 0.07968958, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_af0m1"]
+gradient = SubResource("Gradient_20v12")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnf12"]
+atlas = ExtResource("3_20v12")
+region = Rect2(512, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl1ks"]
+atlas = ExtResource("3_20v12")
+region = Rect2(544, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkwqv"]
+atlas = ExtResource("3_20v12")
+region = Rect2(576, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jgic"]
+atlas = ExtResource("3_20v12")
+region = Rect2(608, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrye1"]
+atlas = ExtResource("3_20v12")
+region = Rect2(640, 256, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cl4he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnf12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl1ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkwqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jgic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrye1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_hl1ks"]
+offsets = PackedFloat32Array(0, 0.34666666, 0.73333335, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.76037925, 0, 1, 0.51357734, 0.07968958, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kkwqv"]
+gradient = SubResource("Gradient_hl1ks")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dnf12"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_dnf12"]
+colors = PackedColorArray(1.353256, 1.0810534, 0, 1, 1.353256, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hl1ks"]
+gradient = SubResource("Gradient_dnf12")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dnf12"]
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+spread = 66.0
+initial_velocity_min = 20.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.00002
+angular_velocity_max = 199.99998
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_hl1ks")
+turbulence_enabled = true
+turbulence_influence_max = 0.3
+turbulence_initial_displacement_min = -19.999998
+turbulence_initial_displacement_max = 20.000002
 
 [sub_resource type="Animation" id="Animation_bh32f"]
 length = 0.001
@@ -115,17 +208,68 @@ texture = SubResource("GradientTexture2D_20v12")
 tile_map_data = PackedByteArray("AAD//wcAAQADAAgAAAD//wgAAQADAAkAAAD//wkAAQADAAoAAAAAAAcAAQACAAgAAAAAAAgAAQACAAkAAAAAAAkAAQACAAoAAAABAAcAAQADAAgAAAABAAgAAQADAAkAAAABAAkAAQADAAoAAAACAAcAAQACAAgAAAACAAgAAQACAAkAAAACAAkAAQACAAoAAAAGAAcAAQACAAgAAAAGAAgAAQACAAkAAAAGAAkAAQACAAoAAAAHAAcAAQADAAgAAAAHAAgAAQADAAkAAAAHAAkAAQADAAoAAAAIAAcAAQACAAgAAAAIAAgAAQACAAkAAAAIAAkAAQACAAoAAAAJAAcAAQADAAgAAAAJAAgAAQADAAkAAAAJAAkAAQADAAoAAAAKAAcAAQACAAgAAAAKAAgAAQACAAkAAAAKAAkAAQACAAoAAAALAAcAAQADAAgAAAALAAgAAQADAAkAAAALAAkAAQADAAoAAAAMAAcAAQACAAgAAAAMAAgAAQACAAkAAAAMAAkAAQACAAoAAAANAAcAAQADAAgAAAANAAgAAQADAAkAAAANAAkAAQADAAoAAAAOAAcAAQACAAgAAAAOAAgAAQACAAkAAAAOAAkAAQACAAoAAAD+/wcAAQACAAgAAAD+/wgAAQACAAkAAAD+/wkAAQACAAoAAAADAAcAAQADAAgAAAADAAgAAQADAAkAAAADAAkAAQADAAoAAAAEAAcAAQACAAgAAAAEAAgAAQACAAkAAAAEAAkAAQACAAoAAAAFAAcAAQADAAgAAAAFAAgAAQADAAkAAAAFAAkAAQADAAoAAAAPAAcAAQADAAgAAAAPAAgAAQADAAkAAAAPAAkAAQADAAoAAAAQAAcAAQACAAgAAAAQAAgAAQACAAkAAAAQAAkAAQACAAoAAAD+////AQACAAoAAAD+/wAAAQACAAsAAAD+/wEAAQADAAoAAAD/////AQADAAoAAAD//wAAAQADAAsAAAD//wEAAQADAAoAAAAAAP//AQACAAoAAAAAAAAAAQACAAsAAAAAAAEAAQAEAA4AAAABAP//AQADAAoAAAABAAAAAQADAAsAAAABAAEAAQAFAA4AAAACAP//AQACAAoAAAACAAAAAQACAAsAAAACAAEAAQACAAwAAAADAP//AQADAAoAAAADAAAAAQADAAsAAAADAAEAAQADAAwAAAAEAP//AQACAAoAAAAEAAAAAQACAAsAAAAEAAEAAQACAAwAAAAFAP//AQADAAoAAAAFAAAAAQADAAsAAAAFAAEAAQADAAwAAAAGAP//AQACAAoAAAAGAAAAAQACAAsAAAAGAAEAAQACAAwAAAAHAP//AQADAAoAAAAHAAAAAQADAAsAAAAHAAEAAQADAAwAAAAIAP//AQACAAoAAAAIAAAAAQACAAsAAAAIAAEAAQACAAwAAAAJAP//AQADAAoAAAAJAAAAAQADAAsAAAAJAAEAAQADAAwAAAAKAP//AQACAAoAAAAKAAAAAQACAAsAAAAKAAEAAQACAAwAAAALAP//AQADAAoAAAALAAAAAQADAAsAAAALAAEAAQADAAwAAAAMAP//AQACAAoAAAAMAAAAAQACAAsAAAAMAAEAAQACAAwAAAANAP//AQADAAoAAAANAAAAAQADAAsAAAANAAEAAQACAA4AAAAOAP//AQACAAoAAAAOAAAAAQACAAsAAAAOAAEAAQADAA4AAAAPAP//AQADAAoAAAAPAAAAAQADAAsAAAAPAAEAAQACAAoAAAAQAP//AQACAAoAAAAQAAAAAQACAAsAAAAQAAEAAQACAAoAAAD//wIAAQADAAwAAAAAAAIAAQAEAAwAAAABAAIAAQAFAAwAAAANAAIAAQAAAAwAAAAOAAIAAQABAAwAAAAPAAIAAQACAAwAAAD+/wIAAQADAAwAAAAQAAIAAQADAAwAAAA=")
 tile_set = ExtResource("1_jm15f")
 
+[node name="PointLight2D2" type="PointLight2D" parent="Control/TileMapContainer"]
+position = Vector2(242, 74)
+energy = 0.5
+range_layer_max = 5
+texture = SubResource("GradientTexture2D_af0m1")
+
 [node name="props" type="Node2D" parent="Control/TileMapContainer"]
 
-[node name="Torch" parent="Control/TileMapContainer/props" instance=ExtResource("2_nqviy")]
+[node name="Torch" type="AnimatedSprite2D" parent="Control/TileMapContainer/props"]
 position = Vector2(76, 227)
+sprite_frames = SubResource("SpriteFrames_cl4he")
+autoplay = "default"
+frame_progress = 0.52740777
+offset = Vector2(0, -32)
 
-[node name="Torch2" parent="Control/TileMapContainer/props" instance=ExtResource("2_nqviy")]
+[node name="PointLight2D" type="PointLight2D" parent="Control/TileMapContainer/props/Torch"]
+position = Vector2(0, -29)
+energy = 0.5
+range_layer_max = 5
+texture = SubResource("GradientTexture2D_kkwqv")
+script = ExtResource("4_af0m1")
+flicker_intensity = 0.2
+flicker_frequency = 0.1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/TileMapContainer/props/Torch"]
+material = SubResource("CanvasItemMaterial_dnf12")
+position = Vector2(0, -33)
+amount = 5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dnf12")
+
+[node name="Torch2" type="AnimatedSprite2D" parent="Control/TileMapContainer/props"]
 position = Vector2(397, 227)
+sprite_frames = SubResource("SpriteFrames_cl4he")
+autoplay = "default"
+frame_progress = 0.52740777
+offset = Vector2(0, -32)
 
-[node name="MainMenu" type="VBoxContainer" parent="Control"]
+[node name="PointLight2D" type="PointLight2D" parent="Control/TileMapContainer/props/Torch2"]
+position = Vector2(0, -29)
+energy = 0.5
+range_layer_max = 5
+texture = SubResource("GradientTexture2D_kkwqv")
+script = ExtResource("4_af0m1")
+flicker_intensity = 0.2
+flicker_frequency = 0.1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/TileMapContainer/props/Torch2"]
+material = SubResource("CanvasItemMaterial_dnf12")
+position = Vector2(0, -33)
+amount = 5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dnf12")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Control/TileMapContainer"]
+color = Color(0.5271547, 0.5271547, 0.5271547, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+layer = 6
+
+[node name="MainMenu" type="VBoxContainer" parent="Control/CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -139,111 +283,110 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Logo" type="Control" parent="Control/MainMenu"]
+[node name="Logo" type="Control" parent="Control/CanvasLayer/MainMenu"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/MainMenu/Logo"]
+[node name="Sprite2D" type="Sprite2D" parent="Control/CanvasLayer/MainMenu/Logo"]
 position = Vector2(0, 58)
 texture = ExtResource("3_nqviy")
 hframes = 8
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/MainMenu/Logo"]
+[node name="LogoAnimation" type="AnimationPlayer" parent="Control/CanvasLayer/MainMenu/Logo"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_af0m1")
 }
 autoplay = "start"
 
-[node name="NewGameButton" type="Button" parent="Control/MainMenu"]
+[node name="NewGameButton" type="Button" parent="Control/CanvasLayer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "New Game"
 
-[node name="LoadGameButton" type="Button" parent="Control/MainMenu"]
+[node name="LoadGameButton" type="Button" parent="Control/CanvasLayer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Game"
 
-[node name="NewGameMenu" type="VBoxContainer" parent="Control"]
+[node name="NewGameMenu" type="VBoxContainer" parent="Control/CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -44.0
+offset_top = -49.0
 offset_right = 88.0
-offset_bottom = 70.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/NewGameMenu"]
+[node name="Label" type="Label" parent="Control/CanvasLayer/NewGameMenu"]
 modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layout_mode = 2
 text = "Start a new game..."
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Control/NewGameMenu"]
+[node name="Control" type="Control" parent="Control/CanvasLayer/NewGameMenu"]
 layout_mode = 2
 
-[node name="NewSlot01" type="Button" parent="Control/NewGameMenu"]
+[node name="NewSlot01" type="Button" parent="Control/CanvasLayer/NewGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Begin Slot 01"
 
-[node name="NewSlot02" type="Button" parent="Control/NewGameMenu"]
+[node name="NewSlot02" type="Button" parent="Control/CanvasLayer/NewGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Begin Slot 02"
 
-[node name="NewSlot03" type="Button" parent="Control/NewGameMenu"]
+[node name="NewSlot03" type="Button" parent="Control/CanvasLayer/NewGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Begin Slot 03"
 
-[node name="LoadGameMenu" type="VBoxContainer" parent="Control"]
+[node name="LoadGameMenu" type="VBoxContainer" parent="Control/CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -44.0
+offset_top = -49.0
 offset_right = 88.0
-offset_bottom = 70.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/LoadGameMenu"]
+[node name="Label" type="Label" parent="Control/CanvasLayer/LoadGameMenu"]
 modulate = Color(0.6745098, 0.19607843, 0.19607843, 1)
 layout_mode = 2
 text = "Load a saved game..."
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Control/LoadGameMenu"]
+[node name="Control" type="Control" parent="Control/CanvasLayer/LoadGameMenu"]
 layout_mode = 2
 
-[node name="LoadSlot01" type="Button" parent="Control/LoadGameMenu"]
+[node name="LoadSlot01" type="Button" parent="Control/CanvasLayer/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Slot 01"
 
-[node name="LoadSlot02" type="Button" parent="Control/LoadGameMenu"]
+[node name="LoadSlot02" type="Button" parent="Control/CanvasLayer/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Slot 02"
 
-[node name="LoadSlot03" type="Button" parent="Control/LoadGameMenu"]
+[node name="LoadSlot03" type="Button" parent="Control/CanvasLayer/LoadGameMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Slot 03"
