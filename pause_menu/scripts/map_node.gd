@@ -87,28 +87,29 @@ func create_entrance_data( transitions : Array[ LevelTransition ] ) -> void:
 	entrances_top.clear()
 	
 	for t in transitions:
+		var pos : Vector2 = ( t.global_position - indicator_offset ) / SCALE_FACTOR
 		if t.location == LevelTransition.SIDE.LEFT:
 			var offset : float = clampf(
-					self.size.y + ( -t.global_position.y / SCALE_FACTOR ),
-					2.0, self.size.y - 2
+					pos.y - 3,
+					2.0, self.size.y - 5
 				)
 			entrances_left.append( offset )
 		elif t.location == LevelTransition.SIDE.RIGHT:
 			var offset : float = clampf(
-					self.size.y + ( -t.global_position.y / SCALE_FACTOR ),
-					2.0, self.size.y - 2
+					pos.y - 3,
+					2.0, self.size.y - 5
 				)
 			entrances_right.append( offset )
 		elif t.location == LevelTransition.SIDE.TOP:
 			var offset : float = clampf(
-					t.global_position.x / SCALE_FACTOR,
-					2.0, self.size.x - 2
+					pos.x,
+					2.0, self.size.x - 5
 				)
 			entrances_top.append( offset )
 		elif t.location == LevelTransition.SIDE.BOTTOM:
 			var offset : float = clampf(
-					t.global_position.x / SCALE_FACTOR,
-					2.0, self.size.x - 2
+					pos.x,
+					2.0, self.size.x - 5
 				)
 			entrances_bottom.append( offset )
 	pass
@@ -136,7 +137,7 @@ func create_transition_blocks() -> void:
 	for t in entrances_top:
 		var block : ColorRect = add_block()
 		block.size.x = 3
-		block.position.y = 0#self.size.x - 1
+		block.position.y = 0
 		block.position.x = t
 	
 	for t in entrances_bottom:
@@ -159,10 +160,10 @@ func add_block() -> ColorRect:
 
 func display_player_location() -> void:
 	var player : Player = get_tree().get_first_node_in_group( "Player" )
-	var i : Control = %PlayerIndicator#$"../PlayerIndicator"
+	var i : Control = %PlayerIndicator
 	var pos : Vector2 = position
 	pos += (( player.global_position - indicator_offset ) / SCALE_FACTOR )
-	var clamp : Vector2 = Vector2( 3, 3 )
+	var clamp : Vector2 = Vector2( 2, 2 )
 	pos = pos.clamp( position + clamp, position + size - clamp )
 	i.position = pos
 	pass

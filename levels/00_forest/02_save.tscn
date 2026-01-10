@@ -53,7 +53,7 @@ target_area_name = "LevelTransition3"
 position = Vector2(480, 224)
 size = 4
 location = 1
-target_level = "uid://cilmdg5tpbdkk"
+target_level = "uid://w3ekm2hic5fx"
 
 [node name="props" type="Node2D" parent="."]
 
