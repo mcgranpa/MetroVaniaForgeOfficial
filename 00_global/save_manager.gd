@@ -1,6 +1,7 @@
 # SaveManager Script
 extends Node
 
+const CONFIG_FILE_PATH = "user://settings.cfg"
 const SLOTS : Array[ String ] = [
 	"save_01", "save_02", "save_03"
 ]
@@ -12,23 +13,26 @@ var persistent_data : Dictionary = {}
 
 
 func _ready() -> void:
+	load_configuration()
 	SceneManager.scene_entered.connect( _on_scene_entered )
 	pass
 
 
 
 func _unhandled_key_input( event: InputEvent ) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_F5:
-			save_game()
-		elif event.keycode == KEY_F7:
-			load_game( current_slot )
-		elif event.keycode == KEY_1:
-			current_slot = 0
-		elif event.keycode == KEY_2:
-			current_slot = 1
-		elif event.keycode == KEY_3:
-			current_slot = 2
+	# DEBUG
+	if OS.is_debug_build():
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_F5:
+				save_game()
+			elif event.keycode == KEY_F7:
+				load_game( current_slot )
+			elif event.keycode == KEY_1:
+				current_slot = 0
+			elif event.keycode == KEY_2:
+				current_slot = 1
+			elif event.keycode == KEY_3:
+				current_slot = 2
 	pass
 
 
@@ -140,3 +144,34 @@ func _on_scene_entered( scene_uid : String ) -> void:
 	else:
 		discovered_areas.append( scene_uid )
 	pass
+
+
+#region Configuration settings
+
+func save_configuration() -> void:
+	var config := ConfigFile.new()
+	config.set_value( "audio", "music", AudioServer.get_bus_volume_linear( 2 ) )
+	config.set_value( "audio", "sfx", AudioServer.get_bus_volume_linear( 3 ) )
+	config.set_value( "audio", "ui", AudioServer.get_bus_volume_linear( 4 ) )
+	config.save( CONFIG_FILE_PATH )
+	pass
+
+
+func load_configuration() -> void:
+	var config := ConfigFile.new()
+	var err = config.load( CONFIG_FILE_PATH )
+	
+	if err != OK:
+		AudioServer.set_bus_volume_linear( 2, 0.8 )
+		AudioServer.set_bus_volume_linear( 3, 1.0 )
+		AudioServer.set_bus_volume_linear( 4, 1.0 )
+		save_configuration()
+		return
+	
+	AudioServer.set_bus_volume_linear( 2, config.get_value( "audio", "music", 0.8 ) )
+	AudioServer.set_bus_volume_linear( 3, config.get_value( "audio", "sfx", 1.0 ) )
+	AudioServer.set_bus_volume_linear( 4, config.get_value( "audio", "ui", 1.0 ) )
+	pass
+
+
+#endregion

@@ -1,10 +1,12 @@
-[gd_scene load_steps=26 format=4 uid="uid://cs38omed071b"]
+[gd_scene load_steps=28 format=4 uid="uid://cs38omed071b"]
 
 [ext_resource type="Script" uid="uid://cpk5ibmruwx4q" path="res://tile_screen/title_screen.gd" id="1_bh32f"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_jm15f"]
 [ext_resource type="Texture2D" uid="uid://bdfgu14350lk5" path="res://levels/tilesets/sprites/forgotten_forest_example_tileset.png" id="3_20v12"]
 [ext_resource type="Texture2D" uid="uid://br22sc8bu5mrc" path="res://tile_screen/metroidvania_logo.png" id="3_nqviy"]
 [ext_resource type="Script" uid="uid://5nwgpdrd1041" path="res://general/scripts/light_flicker.gd" id="4_af0m1"]
+[ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="6_lac46"]
+[ext_resource type="AudioStream" uid="uid://c6xm5v8c17hx0" path="res://music/title_01.ogg" id="7_4fx0s"]
 
 [sub_resource type="Gradient" id="Gradient_bh32f"]
 colors = PackedColorArray(0.8509804, 0.34117648, 0.3882353, 1, 0.32941177, 0.050980393, 0.050980393, 0)
@@ -390,3 +392,8 @@ text = "Load Slot 02"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Load Slot 03"
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("6_lac46")
+track = ExtResource("7_4fx0s")
+metadata/_custom_type_script = "uid://11wam0e7xdau"

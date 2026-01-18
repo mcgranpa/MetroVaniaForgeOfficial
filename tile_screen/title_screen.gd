@@ -32,7 +32,8 @@ func _ready() -> void:
 	load_slot_02.pressed.connect(  _on_load_game_pressed.bind( 1 ) )
 	load_slot_03.pressed.connect(  _on_load_game_pressed.bind( 2 ) )
 	
-	# Add audio to buttons - later episode
+	Audio.setup_button_audio( self )
+	
 	show_main_menu()
 	animation_player.animation_finished.connect( _on_animation_finished )
 	pass
@@ -41,7 +42,7 @@ func _ready() -> void:
 func _unhandled_input( event: InputEvent ) -> void:
 	if event.is_action_pressed( "ui_cancel" ):
 		if main_menu.visible == false:
-			# Audio
+			Audio.ui_cancel()
 			show_main_menu()
 	pass
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dtqhvuntlcu81"]
+[gd_scene load_steps=10 format=4 uid="uid://dtqhvuntlcu81"]
 
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="1_6pbiu"]
 [ext_resource type="PackedScene" uid="uid://b5h7m6ap8g7s2" path="res://general/save_point/save_point.tscn" id="2_ft464"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="2_xkjev"]
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="3_llmj8"]
 [ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="5_cbwi6"]
+[ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="7_dyqvw"]
 [ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="8_6vbf5"]
 
 [sub_resource type="Gradient" id="Gradient_vhcel"]
@@ -65,3 +66,7 @@ position = Vector2(397, 227)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("8_6vbf5")]
 position = Vector2(92, 218)
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("7_dyqvw")
+metadata/_custom_type_script = "uid://11wam0e7xdau"

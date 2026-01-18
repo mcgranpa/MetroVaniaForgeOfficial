@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://gvtn1bdnbeiu"]
+[gd_scene load_steps=8 format=4 uid="uid://gvtn1bdnbeiu"]
 
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="1_1vjl2"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="2_k841l"]
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="3_g2r1k"]
 [ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="5_d3fjw"]
 [ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="6_1p4au"]
+[ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="6_k841l"]
+[ext_resource type="AudioStream" uid="uid://ca6muk2dlkiu2" path="res://music/dungeon_01.ogg" id="7_g2r1k"]
 
 [node name="03" type="Node2D"]
 
@@ -87,3 +89,9 @@ position = Vector2(460, 243)
 color = Color(0.11813272, 0.14020103, 0.11620222, 1)
 energy = 0.53
 blend_mode = 2
+
+[node name="MusicAutoTrigger" type="Node" parent="."]
+script = ExtResource("6_k841l")
+track = ExtResource("7_g2r1k")
+reverb = 3
+metadata/_custom_type_script = "uid://11wam0e7xdau"
