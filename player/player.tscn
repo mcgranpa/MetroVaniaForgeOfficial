@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_rkbax"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cl4sxcfhrc10" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://bwou32ufc3ba" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://c333fkw36xw6b" path="res://player/scripts/player_camera.gd" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
 [ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="9_8t03j"]
 
@@ -121,55 +122,55 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1690810131 groups=["Player"]]
 z_index = 1
 collision_layer = 16
 collision_mask = 3
 floor_constant_speed = true
 script = ExtResource("1_oul6g")
 
-[node name="States" type="Node" parent="."]
+[node name="States" type="Node" parent="." unique_id=1624748434]
 
-[node name="Idle" type="Node" parent="States"]
+[node name="Idle" type="Node" parent="States" unique_id=246460893]
 unique_name_in_owner = true
 script = ExtResource("2_rkbax")
 
-[node name="Run" type="Node" parent="States"]
+[node name="Run" type="Node" parent="States" unique_id=2006789548]
 unique_name_in_owner = true
 script = ExtResource("3_g1dw6")
 
-[node name="Jump" type="Node" parent="States"]
+[node name="Jump" type="Node" parent="States" unique_id=176174155]
 unique_name_in_owner = true
 script = ExtResource("4_qjkh3")
 
-[node name="Fall" type="Node" parent="States"]
+[node name="Fall" type="Node" parent="States" unique_id=260284312]
 unique_name_in_owner = true
 script = ExtResource("5_g6k8r")
 
-[node name="Crouch" type="Node" parent="States"]
+[node name="Crouch" type="Node" parent="States" unique_id=2061167982]
 unique_name_in_owner = true
 script = ExtResource("6_g6k8r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542101118]
 position = Vector2(0, -39)
 texture = ExtResource("7_boad6")
 hframes = 16
 vframes = 4
 
-[node name="CollisionStand" type="CollisionShape2D" parent="."]
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=166083195]
 visible = false
 position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_boad6")
 debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
 
-[node name="CollisionCrouch" type="CollisionShape2D" parent="."]
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=541863818]
 visible = false
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_rgyib")
 disabled = true
 debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=235166869]
 visible = false
 offset_left = -37.0
 offset_top = -75.0
@@ -179,13 +180,11 @@ theme_override_font_sizes/font_size = 12
 text = "label"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hg6s5")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1428922420]
+libraries/ = SubResource("AnimationLibrary_hg6s5")
+autoplay = &"idle"
 
-[node name="OneWayPlatformShapeCast" type="ShapeCast2D" parent="."]
+[node name="OneWayPlatformShapeCast" type="ShapeCast2D" parent="." unique_id=1668206512]
 visible = false
 position = Vector2(0, -3)
 enabled = false
@@ -194,22 +193,23 @@ target_position = Vector2(0, 6)
 max_results = 12
 collision_mask = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=523213469]
 process_mode = 3
 position = Vector2(0, -37)
 editor_draw_screen = false
+script = ExtResource("8_8t03j")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1909316843]
 position = Vector2(0, -29)
 color = Color(1, 0.80195385, 0.5591886, 1)
 energy = 0.3
 texture = SubResource("GradientTexture2D_rgyib")
 
-[node name="InputHints" type="Node2D" parent="."]
+[node name="InputHints" type="Node2D" parent="." unique_id=1163227074]
 position = Vector2(0, -64)
 script = ExtResource("8_hg6s5")
 
-[node name="Sprite2D" type="Sprite2D" parent="InputHints"]
+[node name="Sprite2D" type="Sprite2D" parent="InputHints" unique_id=939146645]
 position = Vector2(0, -1)
 texture = ExtResource("9_8t03j")
 hframes = 16

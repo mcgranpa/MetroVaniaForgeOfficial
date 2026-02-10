@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://cjnihxe6dv1ul"]
+[gd_scene format=4 uid="uid://cjnihxe6dv1ul"]
 
 [ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="1_3otb6"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_xtl8c"]
 [ext_resource type="Texture2D" uid="uid://x8vij5wvobi" path="res://general/save_point/save_point.png" id="2_ntenn"]
-[ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="4_er0on"]
+[ext_resource type="Texture2D" uid="uid://bdfhu12c3al5k" path="res://general/sprites/dust_effects.png" id="4_xtl8c"]
 
 [sub_resource type="GDScript" id="GDScript_ibks0"]
 script/source = "extends Control
@@ -43,17 +43,219 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b6sl7"]
 gradient = SubResource("Gradient_er0on")
 
-[node name="Blackboard" type="Control"]
+[sub_resource type="Animation" id="Animation_k8u6i"]
+resource_name = "01"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.5103155, 2.003053),
+"transitions": PackedFloat32Array(1, 0.5, 2, 2),
+"update": 0,
+"values": [Vector2(228, 181), Vector2(228, 181), Vector2(228, 118), Vector2(228, 181)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.5131537, 1.9981439),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 26, 28, 0]
+}
+
+[sub_resource type="Animation" id="Animation_xtl8c"]
+resource_name = "02"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.5103155, 2.003053),
+"transitions": PackedFloat32Array(1, 0.5, 2, 2),
+"update": 0,
+"values": [Vector2(228, 181), Vector2(228, 181), Vector2(228, 118), Vector2(228, 181)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 1.5131537, 3.1333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 26, 28, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.0011942, 2.1741042, 2.5456643, 2.5937057, 2.9993892, 3.1381757),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(195, 197), Vector2(174, 197), Vector2(174, 89), Vector2(273, 90.10263), Vector2(273, 197), Vector2(255, 197)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.006532, 2.5456643, 2.5937057, 3.1381757),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.1666667, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.1333334, 3.2333333, 3.3333333, 3.4333334, 3.5333333, 3.6333334, 3.7333333, 3.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ntenn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(228, 181)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195, 197)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D3:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtl8c"]
+_data = {
+&"01": SubResource("Animation_k8u6i"),
+&"02": SubResource("Animation_xtl8c"),
+&"RESET": SubResource("Animation_ntenn")
+}
+
+[sub_resource type="Gradient" id="Gradient_b6sl7"]
+offsets = PackedFloat32Array(0.89285713, 1)
+colors = PackedColorArray(0, 1, 0.3823912, 1, 0, 1, 0.22745098, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_olt3x"]
+gradient = SubResource("Gradient_b6sl7")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Blackboard" type="Control" unique_id=804933166]
 texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 79.0
+offset_right = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ibks0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=113106755]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,7 +269,7 @@ grow_vertical = 2
 color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 metadata/_edit_lock_ = true
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="." unique_id=1186188289]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -88,7 +290,7 @@ text = "1) Build a global script for a singleton style save system
 
 5) Extend to support 3 load slots"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1106582946]
 visible = false
 modulate = Color(1, 1, 1, 0.36078432)
 texture_filter = 2
@@ -100,7 +302,7 @@ offset_bottom = 505.0
 texture = SubResource("GradientTexture2D_k8u6i")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1113618755]
 visible = false
 layout_mode = 0
 offset_left = 262.0
@@ -110,7 +312,7 @@ offset_bottom = 514.0
 texture = SubResource("GradientTexture2D_ntenn")
 expand_mode = 1
 
-[node name="TextureRect7" type="TextureRect" parent="TextureRect2"]
+[node name="TextureRect7" type="TextureRect" parent="TextureRect2" unique_id=1316171635]
 layout_mode = 0
 offset_left = -144.0
 offset_top = 9.0
@@ -119,38 +321,33 @@ offset_bottom = 12.0
 texture = SubResource("GradientTexture2D_b6sl7")
 expand_mode = 1
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1219994331]
 texture_filter = 1
 position = Vector2(-19, -11)
-tile_map_data = PackedByteArray("AAD//wcAAQADAAgAAAD//wgAAQADAAkAAAD//wkAAQADAAoAAAAAAAcAAQACAAgAAAAAAAgAAQACAAkAAAAAAAkAAQACAAoAAAABAAcAAQADAAgAAAABAAgAAQADAAkAAAABAAkAAQADAAoAAAACAAcAAQACAAgAAAACAAgAAQACAAkAAAACAAkAAQACAAoAAAAGAAcAAQACAAgAAAAGAAgAAQACAAkAAAAGAAkAAQACAAoAAAAHAAcAAQADAAgAAAAHAAgAAQADAAkAAAAHAAkAAQADAAoAAAAIAAcAAQACAAgAAAAIAAgAAQACAAkAAAAIAAkAAQACAAoAAAAJAAcAAQADAAgAAAAJAAgAAQADAAkAAAAJAAkAAQADAAoAAAAKAAcAAQACAAgAAAAKAAgAAQACAAkAAAAKAAkAAQACAAoAAAALAAcAAQADAAgAAAALAAgAAQADAAkAAAALAAkAAQADAAoAAAAMAAcAAQACAAgAAAAMAAgAAQACAAkAAAAMAAkAAQACAAoAAAANAAcAAQADAAgAAAANAAgAAQADAAkAAAANAAkAAQADAAoAAAAOAAcAAQACAAgAAAAOAAgAAQACAAkAAAAOAAkAAQACAAoAAAD+/wcAAQACAAgAAAD+/wgAAQACAAkAAAD+/wkAAQACAAoAAAADAAcAAQADAAgAAAADAAgAAQADAAkAAAADAAkAAQADAAoAAAAEAAcAAQACAAgAAAAEAAgAAQACAAkAAAAEAAkAAQACAAoAAAAFAAcAAQADAAgAAAAFAAgAAQADAAkAAAAFAAkAAQADAAoAAAAPAAcAAQADAAgAAAAPAAgAAQADAAkAAAAPAAkAAQADAAoAAAAQAAcAAQACAAgAAAAQAAgAAQACAAkAAAAQAAkAAQACAAoAAAD+////AQACAAoAAAD+/wAAAQACAAsAAAD+/wEAAQADAAoAAAD/////AQADAAoAAAD//wAAAQADAAsAAAD//wEAAQADAAoAAAAAAP//AQACAAoAAAAAAAAAAQACAAsAAAAAAAEAAQAEAA4AAAABAP//AQADAAoAAAABAAAAAQADAAsAAAABAAEAAQAFAA4AAAACAP//AQACAAoAAAACAAAAAQACAAsAAAACAAEAAQACAAwAAAADAP//AQADAAoAAAADAAAAAQADAAsAAAADAAEAAQADAAwAAAAEAP//AQACAAoAAAAEAAAAAQACAAsAAAAEAAEAAQACAAwAAAAFAP//AQADAAoAAAAFAAAAAQADAAsAAAAFAAEAAQADAAwAAAAGAP//AQACAAoAAAAGAAAAAQACAAsAAAAGAAEAAQACAAwAAAAHAP//AQADAAoAAAAHAAAAAQADAAsAAAAHAAEAAQADAAwAAAAIAP//AQACAAoAAAAIAAAAAQACAAsAAAAIAAEAAQACAAwAAAAJAP//AQADAAoAAAAJAAAAAQADAAsAAAAJAAEAAQADAAwAAAAKAP//AQACAAoAAAAKAAAAAQACAAsAAAAKAAEAAQACAAwAAAALAP//AQADAAoAAAALAAAAAQADAAsAAAALAAEAAQADAAwAAAAMAP//AQACAAoAAAAMAAAAAQACAAsAAAAMAAEAAQACAAwAAAANAP//AQADAAoAAAANAAAAAQADAAsAAAANAAEAAQACAA4AAAAOAP//AQACAAoAAAAOAAAAAQACAAsAAAAOAAEAAQADAA4AAAAPAP//AQADAAoAAAAPAAAAAQADAAsAAAAPAAEAAQACAAoAAAAQAP//AQACAAoAAAAQAAAAAQACAAsAAAAQAAEAAQACAAoAAAD//wIAAQADAAwAAAAAAAIAAQAEAAwAAAABAAIAAQAFAAwAAAANAAIAAQAAAAwAAAAOAAIAAQABAAwAAAAPAAIAAQACAAwAAAD+/wIAAQADAAwAAAAQAAIAAQADAAwAAAA=")
+tile_map_data = PackedByteArray("AAD//wcAAQADAAgAAAD//wgAAQADAAkAAAD//wkAAQADAAoAAAAAAAcAAQACAAgAAAAAAAgAAQACAAkAAAAAAAkAAQACAAoAAAABAAcAAQADAAgAAAABAAgAAQADAAkAAAABAAkAAQADAAoAAAACAAcAAQACAAgAAAACAAgAAQACAAkAAAACAAkAAQACAAoAAAAGAAcAAQACAAgAAAAGAAgAAQACAAkAAAAGAAkAAQACAAoAAAAHAAcAAQADAAgAAAAHAAgAAQADAAkAAAAHAAkAAQADAAoAAAAIAAcAAQACAAgAAAAIAAgAAQACAAkAAAAIAAkAAQACAAoAAAAJAAcAAQADAAgAAAAJAAgAAQADAAkAAAAJAAkAAQADAAoAAAAKAAcAAQACAAgAAAAKAAgAAQACAAkAAAAKAAkAAQACAAoAAAALAAcAAQADAAgAAAALAAgAAQADAAkAAAALAAkAAQADAAoAAAAMAAcAAQACAAgAAAAMAAgAAQACAAkAAAAMAAkAAQACAAoAAAANAAcAAQADAAgAAAANAAgAAQADAAkAAAANAAkAAQADAAoAAAAOAAcAAQACAAgAAAAOAAgAAQACAAkAAAAOAAkAAQACAAoAAAD+/wcAAQACAAgAAAD+/wgAAQACAAkAAAD+/wkAAQACAAoAAAADAAcAAQADAAgAAAADAAgAAQADAAkAAAADAAkAAQADAAoAAAAEAAcAAQACAAgAAAAEAAgAAQACAAkAAAAEAAkAAQACAAoAAAAFAAcAAQADAAgAAAAFAAgAAQADAAkAAAAFAAkAAQADAAoAAAAPAAcAAQADAAgAAAAPAAgAAQADAAkAAAAPAAkAAQADAAoAAAAQAAcAAQACAAgAAAAQAAgAAQACAAkAAAAQAAkAAQACAAoAAAD+////AQACAAsAAAD+/wAAAQADAAoAAAD+/wEAAQADAAwAAAD/////AQADAAsAAAD//wAAAQADAAoAAAD//wEAAQADAAwAAAAAAP//AQACAAsAAAAAAAAAAQAEAA4AAAAAAAEAAQAEAAwAAAABAP//AQADAAsAAAABAAAAAQAFAA4AAAABAAEAAQAFAAwAAAACAP//AQACAAsAAAACAAAAAQACAAwAAAADAP//AQADAAsAAAADAAAAAQADAAwAAAAEAP//AQACAAsAAAAEAAAAAQACAAwAAAAFAP//AQADAAsAAAAFAAAAAQADAAwAAAAGAP//AQACAAsAAAAGAAAAAQACAAwAAAAHAP//AQADAAsAAAAHAAAAAQADAAwAAAAIAP//AQACAAsAAAAIAAAAAQACAAwAAAAJAP//AQADAAsAAAAJAAAAAQADAAwAAAAKAP//AQACAAsAAAAKAAAAAQACAAwAAAALAP//AQADAAsAAAALAAAAAQADAAwAAAAMAP//AQACAAsAAAAMAAAAAQACAAwAAAANAP//AQADAAsAAAANAAAAAQACAA4AAAANAAEAAQAAAAwAAAAOAP//AQACAAsAAAAOAAAAAQADAA4AAAAOAAEAAQABAAwAAAAPAP//AQADAAsAAAAPAAAAAQACAAoAAAAPAAEAAQACAAwAAAAQAP//AQACAAsAAAAQAAAAAQACAAoAAAAQAAEAAQADAAwAAAD+//7/AQACAAoAAAD///7/AQADAAoAAAAAAP7/AQACAAoAAAABAP7/AQADAAoAAAACAP7/AQACAAoAAAADAP7/AQADAAoAAAAEAP7/AQACAAoAAAAFAP7/AQADAAoAAAAGAP7/AQACAAoAAAAHAP7/AQADAAoAAAAIAP7/AQACAAoAAAAJAP7/AQADAAoAAAAKAP7/AQACAAoAAAALAP7/AQADAAoAAAAMAP7/AQACAAoAAAANAP7/AQADAAoAAAAOAP7/AQACAAoAAAAPAP7/AQADAAoAAAAQAP7/AQACAAoAAAA=")
 tile_set = ExtResource("1_xtl8c")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=334429174]
+visible = false
 texture_filter = 1
-position = Vector2(223, 189)
+position = Vector2(454, 189)
 texture = ExtResource("2_ntenn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=745129101]
 texture_filter = 1
-position = Vector2(153, 181)
+position = Vector2(228, 181)
 texture = ExtResource("1_3otb6")
 hframes = 16
 vframes = 4
-frame = 16
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(0, -26.5)
-texture = ExtResource("4_er0on")
-hframes = 16
-
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=21302967]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 64.0
-offset_right = 386.0
-offset_bottom = 100.0
+offset_left = 85.0
+offset_top = 49.0
+offset_right = 362.0
+offset_bottom = 85.0
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect2"]
+[node name="ColorRect2" type="ColorRect" parent="ColorRect2" unique_id=1107859268]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,40 +360,47 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15294118, 0.15294118, 0.15294118, 1)
 
-[node name="Label" type="Label" parent="ColorRect2"]
+[node name="Label" type="Label" parent="ColorRect2" unique_id=1520378576]
 modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
 layout_mode = 1
-offset_left = 81.0
-offset_top = 6.0
-offset_right = 247.0
-offset_bottom = 29.0
-text = "SaveManager Global"
-
-[node name="ColorRect3" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 61.0
-offset_top = 104.0
-offset_right = 386.0
-offset_bottom = 140.0
-
-[node name="ColorRect2" type="ColorRect" parent="ColorRect3"]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+anchor_bottom = 0.5
+offset_top = -7.5
+offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+text = "Visual Effects Factory"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="ColorRect3"]
-modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
-layout_mode = 1
-offset_left = 80.0
-offset_top = 6.0
-offset_right = 246.0
-offset_bottom = 29.0
-text = "MessageBus Global"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2008094533]
+libraries/ = SubResource("AnimationLibrary_xtl8c")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1794494338]
+position = Vector2(253, 197)
+points = PackedVector2Array(0, 0, 20, 0, 20, -100)
+width = 2.0
+default_color = Color(0.46711743, 0.46711743, 0.46711743, 1)
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=69347963]
+position = Vector2(194, 197)
+scale = Vector2(-1, 1)
+points = PackedVector2Array(0, 0, 20, 0, 20, -100)
+width = 2.0
+default_color = Color(0.46711743, 0.46711743, 0.46711743, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1192547064]
+visible = false
+position = Vector2(195, 197)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_olt3x")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=556182553]
+visible = false
+texture_filter = 1
+position = Vector2(227, 205)
+texture = ExtResource("4_xtl8c")
+hframes = 8
+vframes = 3
+frame = 8

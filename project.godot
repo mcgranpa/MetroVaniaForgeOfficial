@@ -8,12 +8,20 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Metroidvania Forge"
 run/main_scene="uid://cs38omed071b"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bn3bmyqingnk6"
+
+[audio]
+
+buses/default_bus_layout="uid://dgobg3k86qsst"
 
 [autoload]
 
@@ -22,6 +30,7 @@ SaveManager="*res://00_global/save_manager.gd"
 Messages="*res://00_global/messages.gd"
 PlayerHud="*res://00_global/player_hud/player_hud.tscn"
 Audio="*res://00_global/audio/audio.tscn"
+VisualEffects="*uid://cj6s1kth4jr8u"
 
 [display]
 
