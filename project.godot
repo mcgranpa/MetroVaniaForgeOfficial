@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Metroidvania Forge"
-run/main_scene="uid://cs38omed071b"
+run/main_scene="uid://8lidg4hqe43w"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bn3bmyqingnk6"
 
@@ -133,6 +133,9 @@ pause={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="One Way Platform"
 2d_physics/layer_5="Player"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="Breakable"
+2d_physics/layer_8="SlamBreakable"
 
 [rendering]
 
