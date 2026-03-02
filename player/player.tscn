@@ -11,8 +11,11 @@
 [ext_resource type="Script" uid="uid://c333fkw36xw6b" path="res://player/scripts/player_camera.gd" id="8_8t03j"]
 [ext_resource type="Texture2D" uid="uid://c7uf6ewbr3icj" path="res://player/sprites/weapon_smears.png" id="8_ebec5"]
 [ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://det6gje08owd6" path="res://player/states/take_damage.gd" id="8_wodsf"]
 [ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="9_8t03j"]
 [ext_resource type="Script" uid="uid://6elvigpr616e" path="res://general/scripts/attack_area.gd" id="11_2ieo8"]
+[ext_resource type="Script" uid="uid://ptbycb4ueu2v" path="res://general/scripts/damage_area.gd" id="14_kb6p2"]
+[ext_resource type="AudioStream" uid="uid://2nyikh1dnayc" path="res://general/audio/aargh.wav" id="16_32hag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -244,6 +247,22 @@ tracks/0/keys = {
 "values": [14, 15, 16, 17, 18, 19, 12, 13]
 }
 
+[sub_resource type="Animation" id="Animation_wodsf"]
+resource_name = "take_damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hg6s5"]
 _data = {
 &"RESET": SubResource("Animation_rgyib"),
@@ -252,7 +271,8 @@ _data = {
 &"crouch": SubResource("Animation_2ieo8"),
 &"idle": SubResource("Animation_boad6"),
 &"jump": SubResource("Animation_8t03j"),
-&"run": SubResource("Animation_hg6s5")
+&"run": SubResource("Animation_hg6s5"),
+&"take_damage": SubResource("Animation_wodsf")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boad6"]
@@ -304,6 +324,10 @@ script = ExtResource("6_g6k8r")
 [node name="Attack" type="Node" parent="States" unique_id=1576276975]
 unique_name_in_owner = true
 script = ExtResource("7_yllr7")
+
+[node name="TakeDamage" type="Node" parent="States" unique_id=258740209]
+unique_name_in_owner = true
+script = ExtResource("8_wodsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1542101118]
 position = Vector2(0, -39)
@@ -389,3 +413,27 @@ metadata/_custom_type_script = "uid://6elvigpr616e"
 position = Vector2(33.5, 0)
 shape = SubResource("RectangleShape2D_ebec5")
 debug_color = Color(1, 0, 0.04934883, 0.41960785)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=534187012]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("14_kb6p2")
+metadata/_custom_type_script = "uid://ptbycb4ueu2v"
+
+[node name="DAStand" type="CollisionShape2D" parent="DamageArea" unique_id=554763168]
+unique_name_in_owner = true
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_boad6")
+debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
+
+[node name="DACrouch" type="CollisionShape2D" parent="DamageArea" unique_id=104085352]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_rgyib")
+disabled = true
+debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
+
+[node name="HurtAudio" type="AudioStreamPlayer2D" parent="." unique_id=970487203]
+stream = ExtResource("16_32hag")
+bus = &"SFX"

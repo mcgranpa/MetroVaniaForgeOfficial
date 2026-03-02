@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://d148cbaa4hl20" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_medium.tres" id="7_f7pug"]
 [ext_resource type="Script" uid="uid://11wam0e7xdau" path="res://music/music_auto_trigger.gd" id="7_ynsuh"]
 [ext_resource type="Resource" uid="uid://b04r0mjwn3x0r" path="res://00_global/visual_effects/hit_particle_settings/hit_magic_blue.tres" id="11_te8jg"]
+[ext_resource type="PackedScene" uid="uid://dcq1825l8xtt0" path="res://levels/props/test_dummy/spike_dummy.tscn" id="13_yjl7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi42a"]
 size = Vector2(126, 155)
@@ -68,7 +69,7 @@ energy = 0.6
 blend_mode = 2
 
 [node name="PlayerSpawn" parent="." unique_id=526678327 instance=ExtResource("4_ynsuh")]
-position = Vector2(586, 198)
+position = Vector2(587, 198)
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1333058529]
 script = ExtResource("7_ynsuh")
@@ -95,3 +96,6 @@ metadata/_custom_type_script = "uid://ptbycb4ueu2v"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Breakable/DamageArea" unique_id=268240787]
 position = Vector2(800, 156.5)
 shape = SubResource("RectangleShape2D_pi42a")
+
+[node name="SpikeDummy" parent="." unique_id=481194844 instance=ExtResource("13_yjl7g")]
+position = Vector2(631, 226)
