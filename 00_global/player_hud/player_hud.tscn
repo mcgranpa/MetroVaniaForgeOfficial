@@ -21,6 +21,7 @@ gradient = SubResource("Gradient_tdgrf")
 script/source = "extends Button
 
 @export var particle_settings : HitParticleSettings
+const SPIKE_DUMMY = preload(\"uid://dcq1825l8xtt0\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,8 +30,8 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	var pos : Vector2 = get_tree().get_first_node_in_group(\"Player\").global_position
-	VisualEffects.hit_particles( pos - Vector2(0,48), Vector2(0, -1), particle_settings )
+	var player : Player = get_tree().get_first_node_in_group(\"Player\")
+	player.double_jump = !player.double_jump
 	pass
 "
 
@@ -85,12 +86,74 @@ texture_progress = SubResource("GradientTexture2D_4jtec")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="Control" unique_id=80970566]
-visible = false
 layout_mode = 0
-offset_left = 364.0
-offset_top = 10.0
-offset_right = 472.0
-offset_bottom = 33.0
-text = "Test Partciles"
+offset_left = 324.0
+offset_top = 9.0
+offset_right = 473.0
+offset_bottom = 32.0
+text = "Toggle Double Jump
+"
 script = SubResource("GDScript_vb1bs")
 particle_settings = ExtResource("3_26715")
+
+[node name="GameOver" type="Control" parent="Control" unique_id=1731042568]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GameOver" unique_id=1344641196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7882353)
+
+[node name="Label" type="Label" parent="Control/GameOver" unique_id=993510164]
+modulate = Color(0.47843137, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -16.0
+offset_right = 38.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GameOver" unique_id=1959225682]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 22.0
+offset_right = 152.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=764928871]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "load last save"
+
+[node name="QuitButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=492922985]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "quit to title"

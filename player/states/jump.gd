@@ -2,6 +2,7 @@ class_name PlayerStateJump extends PlayerState
 
 @export var jump_velocity : float = 450.0
 
+@onready var jump_audio: AudioStreamPlayer2D = %JumpAudio
 
 
 # What happens when this state is initialized?
@@ -11,11 +12,14 @@ func init() -> void:
 
 # What happens when we enter this state?
 func enter() -> void:
-	VisualEffects.jump_dust( player.global_position )
+	if player.is_on_floor():
+		VisualEffects.jump_dust( player.global_position )
+	else:
+		VisualEffects.hit_dust( player.global_position )
 	player.animation_player.play( "jump" )
 	player.animation_player.pause()
-	#player.add_debug_indicator( Color.LIME_GREEN )
-	player.velocity.y = -jump_velocity
+	
+	do_jump()
 	
 	# Check if this is a buffer jump
 	# If it is, handle jump button release condition retroactively
@@ -57,6 +61,19 @@ func physics_process( _delta: float ) -> PlayerState:
 		return fall
 	player.velocity.x = player.direction.x * player.move_speed
 	return next_state
+
+
+
+func do_jump() -> void:
+	if player.jump_count > 0:
+		if player.double_jump == false:
+			return
+		elif player.jump_count > 1:
+			return
+	player.jump_count += 1
+	player.velocity.y = -jump_velocity
+	jump_audio.play()
+	pass
 
 
 
