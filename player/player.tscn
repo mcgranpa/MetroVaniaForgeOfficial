@@ -491,6 +491,7 @@ collide_with_areas = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=523213469]
 process_mode = 3
 position = Vector2(0, -37)
+position_smoothing_enabled = true
 editor_draw_screen = false
 script = ExtResource("8_8t03j")
 
