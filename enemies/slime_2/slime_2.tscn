@@ -204,6 +204,7 @@ metadata/_custom_type_script = "uid://i3qn4pbsaesp"
 [node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=1698541953]
 unique_name_in_owner = true
 script = ExtResource("8_482dd")
+walk_speed = 10.0
 metadata/_custom_type_script = "uid://dywm0814cbsui"
 
 [node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=1893312370]
